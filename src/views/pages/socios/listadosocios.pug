@@ -1,0 +1,21 @@
+extends ../../templates/template.pug
+include ../../mixins/cardSocios
+block header
+    - const confOp= confirmarOperacion;
+    if typeof(confOp)!="undefined"
+        .success
+            p.success__msj=confOp
+    include ../../includes/header.pug
+block content
+    main.main
+        section.cards#cards
+            - const users= allUsers;
+            each user in users
+                +card(user)
+            else
+                h1.title.title--center No hay usuarios
+
+block footer
+    include ../../includes/footer.pug
+block script
+    include ../../includes/scripts.pug

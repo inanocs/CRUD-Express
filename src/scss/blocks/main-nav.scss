@@ -1,0 +1,167 @@
+.main-nav {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.815);
+  padding-top: 7rem;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-100%);
+  z-index: 10;
+  &__ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__item:first-child > &__link {
+    border-top: 1px solid rgba(255, 255, 255, 0.425);
+  }
+  &__link {
+    display: block;
+    color: whitesmoke;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.425);
+    padding: 1rem;
+    transition: background-color 0.3s linear;
+
+    &--active {
+      background-color: rgba(45, 145, 45, 0.521);
+    }
+
+    &--bgblue {
+      background-color: rgba(17, 17, 17, 0.479);
+    }
+  }
+
+  &__sublist {
+    height: 0;
+    overflow: hidden;
+
+    transition: height 0.5s;
+
+    &--show {
+      height: 103px;
+    }
+  }
+
+  &--show {
+    transform: translateY(0);
+  }
+
+  @media screen and(min-width:1024px) {
+    position: initial;
+
+    width: auto;
+    height: auto;
+    background: none;
+    padding-top: 0;
+    transform: translateY(0);
+    z-index: 10;
+    width: 40%;
+
+    &__ul {
+      display: flex;
+    }
+
+    &__item:first-child > &__link {
+      border-top: none;
+    }
+
+    &__item {
+      position: relative;
+      width: 100%;
+    }
+    &__link {
+      border-bottom: none;
+
+      &:hover {
+        background-color: rgb(45, 145, 45);
+      }
+      &:hover + ul[class="main-nav__ul main-nav__sublist"] {
+        height: 156px;
+      }
+
+      &--bgblue {
+        background-color: rgb(17, 17, 17);
+      }
+    }
+
+    &__sublist {
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+
+      &--show,
+      &:hover {
+        height: 156px;
+      }
+    }
+  }
+}
+
+.topbar {
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0.5rem;
+  width: 30px;
+  position: relative;
+  z-index: 11;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
+
+.hamburger-icon {
+  width: 100%;
+  background: white;
+  height: 2px;
+  border-radius: 2px;
+  display: flex;
+  position: relative;
+  &::after,
+  &::before {
+    background: white;
+    height: 2px;
+    border-radius: 1px;
+    content: "";
+    position: absolute;
+    width: 100%;
+    display: block;
+    left: 0;
+    transition: transform 0.3s ease;
+  }
+
+  &::after {
+    bottom: 7px;
+  }
+  &::before {
+    top: 7px;
+  }
+
+  &--show {
+    height: 0;
+
+    &::after,
+    &::before {
+      top: 0;
+    }
+    &::after {
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+  }
+}

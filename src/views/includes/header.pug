@@ -1,0 +1,14 @@
+include ../config/config.pug
+header.header
+    .container
+        h1.header__title Biblioteca
+        .topbar#topbar
+            .hamburger-icon
+        nav.main-nav
+            ul.main-nav__ul
+                each page in pages
+                    li.main-nav__item #[a(href= page.url).main-nav__link= page.title]
+                        if page.child.length > 0
+                            ul.main-nav__ul.main-nav__sublist
+                                each subPage in page.child
+                                    li.main-nav__subitem #[a(href=subPage.url).main-nav__link.main-nav__link--bgblue= subPage.title]

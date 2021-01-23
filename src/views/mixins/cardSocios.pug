@@ -1,0 +1,10 @@
+mixin card(user)
+    .card
+        h1.card__title=user.NOMBRE
+        p.card__name Email 
+            span=`${user.EMAIL}`
+        p.card__name Direccion: 
+            span=`${user.DIRECCION}`
+        .card__options
+            a(href=`/socios/editar/${user.IDSOCIO}` data-id= user.IDSOCIO).card__button.card__edit Editar Socio
+            a(href=`/socios/eliminar/${user.IDSOCIO}` data-id= user.IDSOCIO).card__button.card__button--bg-red.card__delete Eliminar Socio

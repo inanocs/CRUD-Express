@@ -1,0 +1,28 @@
+extends ../../templates/template.pug
+include ../../mixins/cardSocios
+block header
+    - const confOp= confirmarOperacion;
+    if typeof(confOp)!="undefined"
+        .success
+            p.success__msj=confOp
+    include ../../includes/header.pug
+block content
+    main.main
+        form#form.form(action="/socios/nuevosocio",method="POST")      
+            .form__item
+                label.form__label(for="nombre") Nombre
+                input#nombre.form__input(type="text", name="nombre")
+            .form__item
+                label.form__label(for="email") Email
+                input#email.form__input(type="email", name="email")
+            .form__item
+                label.form__label(for="direccion") Dirección
+                input#direccion.form__input(type="text", name="direccion")
+            .form__item
+               input.form__submit(type="submit", value="Enviar")
+
+
+block footer
+    include ../../includes/footer.pug
+block script
+    include ../../includes/scripts.pug
